@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Ruang_media;
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Models\Hasil_kerja_perusahaan;
 use Illuminate\Http\Request;
@@ -79,8 +80,13 @@ class PageController extends Controller
 
 
         $insert = Hasil_kerja_perusahaan::create($data);
-
-        return redirect()->route('home')->with('success', 'Content added successfully!');
+        if($insert){
+            // info, success, warning or error
+            flash()->success('success', 'Content Create successfully!');
+        }else{
+            flash()->error('success', 'Content Create successfully!');
+        }
+        return redirect()->route('home');
 
     }
 
@@ -113,6 +119,13 @@ class PageController extends Controller
             'description' => $request->input('description'),
         ];
         $insert = Hasil_kerja_perusahaan::find($request->id)->update($data);
+        if($insert){
+            // info, success, warning or error
+            flash()->success('success', 'Content Updated successfully!');
+        }else{
+            flash()->error('Error', 'Error Updated !');
+        }
+        return redirect()->route('home');
         return redirect()->route('home')->with('success', 'Content update successfully!');
 
     }

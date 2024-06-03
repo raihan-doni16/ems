@@ -22,12 +22,22 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\FrontController;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
+//front
+Route::get('/', [FrontController::class, 'home'])->name('front-home');
+Route::get('/about', [FrontController::class, 'about'])->name('front-about');
+Route::get('/front-ppa', [FrontController::class, 'ppa'])->name('front-ppa');
+Route::get('/front-plb3', [FrontController::class, 'plb3'])->name('front-plb3');
+Route::get('/front-legal', [FrontController::class, 'legalCompliance'])->name('front-legal');
 
-Route::get('/', function () {return redirect('/home');})->middleware('auth');
+
+
+
+// Route::get('/', function () {return redirect('/home');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
@@ -45,7 +55,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
 
-
+    // new feature
+    Route::get('/dashboard', [FrontController::class, 'dashboard'])->name('dashboard');
+    Route::get('/acc-report', [FrontController::class, 'acc_report'])->name('acc-report');
+    Route::get('/repository', [FrontController::class, 'repository'])->name('repository');
+    Route::get('/licence-report', [FrontController::class, 'licence_report'])->name('licence-report');
     // fitur Home
     // route kerja
     Route::get('/home/kerja-add', [PageController::class, 'kerja_add'])->name('home.kerja-add');
@@ -135,6 +149,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	Route::get('/{page}', [PageController::class, 'index'])->name('page');
+	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
