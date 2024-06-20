@@ -55,11 +55,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
 
-    // new feature
+    // new feature dashboard legal compliance
     Route::get('/dashboard', [FrontController::class, 'dashboard'])->name('dashboard');
     Route::get('/acc-report', [FrontController::class, 'acc_report'])->name('acc-report');
     Route::get('/repository', [FrontController::class, 'repository'])->name('repository');
     Route::get('/licence-report', [FrontController::class, 'licence_report'])->name('licence-report');
+    Route::get('/licence-report/add', [FrontController::class, 'add_licence_report'])->name('add-licence-report');
+    Route::post('/licence-report/post', [FrontController::class, 'post_licence_report'])->name('post-licence-report');
+    Route::get('/licence-report/edit/{id}', [FrontController::class, 'edit_licence_report'])->name('edit-licence-report');
+    Route::post('/licence-report/edit-post', [FrontController::class, 'post_edit_licence_report'])->name('post-edit-licence-report');
+    Route::get('/licence-report/delete/{id}', [FrontController::class, 'delete_licence_report'])->name('delete-licence-report');
+
     // fitur Home
     // route kerja
     Route::get('/home/kerja-add', [PageController::class, 'kerja_add'])->name('home.kerja-add');
@@ -146,6 +152,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ppa/legal-edit/{id}', [PageController::class, 'legal_edit'])->name('ppa.legal-edit');
     Route::post('/ppa/legal-edit-post', [PageController::class, 'legal_edit_post'])->name('ppa.legal-edit-post');
     Route::get('/ppa/legal-delete/{id}', [PageController::class, 'legal_delete'])->name('ppa.legal-delete');
+
 
 
 

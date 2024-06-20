@@ -5,10 +5,34 @@
             <h6 class=" nav-text mb-0">{{ $title }}</h6>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group">
-                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Type here...">
+                @if ($title == 'Dashboard')
+                <div class="input-group me-3 mt-2">
+                    <span class="input-group-text" id="icon-addon1"><i class="bi bi-check-circle"></i></span>
+                    <select id="selectStatus" class="form-select" style="width: 150px" onchange="this.form.submit()" name="status">
+                        <option value="">Select Status</option>
+                        @foreach ($filter_status as $data)
+                            <option value="{{ $data->status }}" {{ request()->status == $data->status ? 'selected' : '' }}>
+                                {{ $data->status }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
+
+                <div class="input-group me-3 mt-2">
+                    <span class="input-group-text" id="icon-addon2"><i class="bi bi-geo-alt"></i></span>
+                    <select id="selectArea" class="form-select" style="width: 150px" onchange="this.form.submit()" name="area">
+                        <option value="">Select Area</option>
+                        @foreach ($filter_area as $data)
+                            <option value="{{ $data->area }}" {{ request()->area == $data->area ? 'selected' : '' }}>
+                                {{ $data->area }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+
+                @endif
             </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

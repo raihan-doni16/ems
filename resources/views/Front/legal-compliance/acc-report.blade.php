@@ -12,94 +12,27 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="row">
-                            <div class="col-md-5 kanban-card card m-4">
+                            @foreach ($licenceReport as $data )
+                            @if ($data->approve == '0')
+                            <div class="col-md-5 kanban-card card m-4 position-relative">
                                 <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
+                                    <div class="badge-container position-absolute top-0 end-0 m-2 d-flex">
+                                        <span class="badge badge-sm me-2 "style="background-color: rgba(255, 255, 0, 0.5)">{{$data->kategori}}</span>
+                                        <span class="badge badge-sm " style="background-color: rgba(0, 255, 30, 0.5)">{{$data->tipe_bisnis}}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="rounded-circle  me-2" style="background-color: rgba(255, 255, 0, 0.5);">
+                                            <i class="bi bi-file-pdf text-black fs-2 m-2"></i>
                                         </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-0 text-sm">{{$data->area}}</h6>
+                                            <p class="text-xs text-secondary mb-0">{{$data->nomor_izin}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5 kanban-card card mt-4 mb-4">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 kanban-card card m-4 mt-1">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 kanban-card card mt-1 mb-4">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -113,94 +46,27 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="row">
-                            <div class="col-md-5 kanban-card card  ms-4 m-4">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
+                            @foreach ($licenceReport as $data )
+                                @if ($data->approve == '1')
+                                    <div class="col-md-5 kanban-card card m-4 position-relative">
+                                        <div class="card-body">
+                                            <div class="badge-container position-absolute top-0 end-0 m-2 d-flex">
+                                                <span class="badge badge-sm me-2 "style="background-color: rgba(255, 255, 0, 0.5)">{{$data->kategori}}</span>
+                                                <span class="badge badge-sm " style="background-color: rgba(0, 255, 30, 0.5)">{{$data->tipe_bisnis}}</span>
+                                            </div>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <div class="rounded-circle  me-2" style="background-color: rgba(255, 255, 0, 0.5);">
+                                                    <i class="bi bi-file-pdf text-black fs-2 m-2"></i>
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <h6 class="mb-0 text-sm">{{$data->area}}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{$data->nomor_izin}}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 kanban-card card mt-4 mb-4 me-3">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 kanban-card card m-4 mt-1 ">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 kanban-card card mt-1 mb-4">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                                    <p class="text-xs text-secondary mb-0">Developer</p>
-                                    <div class="text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>

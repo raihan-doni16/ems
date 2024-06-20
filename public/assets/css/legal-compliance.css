@@ -5,6 +5,32 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.pagination {
+    font-size: 12px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    padding: 5px 10px;
+}
+.input-group .form-select {
+    width: auto;
+}
+
+.input-group-text {
+    background-color: #fff;
+    border-right: none;
+}
+
+.form-select {
+    border-left: none;
+}
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
@@ -61,7 +87,37 @@
   --bs-body-bg: #fff;
   --bs-color-bg:linear-gradient(to left, rgb(47, 193, 132), yellow);
 }
-
+.table-header {
+    background-color: rgba(255, 255, 0, 0.5);
+    padding: 10px;
+}
+.table thead {
+    background-color: rgba(255, 255, 0, 0.5);
+}
+.text-center {
+    text-align: center;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.text-secondary {
+    color: #6c757d;
+}
+.text-xxs {
+    font-size: 0.75rem;
+}
+.font-weight-bolder {
+    font-weight: bolder;
+}
+.opacity-7 {
+    opacity: 0.7;
+}
+.pt-4 {
+    padding-top: 1.5rem;
+}
+.pb-4 {
+    padding-bottom: 1.5rem;
+}
 *,
 *::before,
 *::after {

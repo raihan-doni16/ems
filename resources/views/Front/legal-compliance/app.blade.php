@@ -19,7 +19,15 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/legal-compliance.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/legal-compliance.css')}}"rel="stylesheet" />
+    {{-- chart css --}}
+    <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/card-js/dist/card.min.css')}}">
+
+    {{-- sweet alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -44,6 +52,7 @@
                     @yield('content')
                 </main>
             {{-- @include('components.fixed-plugin') --}}
+            @include('sweetalert::alert')
         @endif
     @endauth
 
@@ -53,12 +62,16 @@
     <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
 
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       <!-- Bootstrap and PDF.js JavaScript Dependencies -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/card-js/dist/card.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
