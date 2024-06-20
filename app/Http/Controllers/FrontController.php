@@ -37,75 +37,99 @@ class FrontController extends Controller
     public function legalCompliance()
     {
         return view('front.legal-compliance');
-    }//
+    }
 
-//fitur legal-compliance post
-    public function dashboard()
+    //fitur legal-compliance dashboard
+    public function dashboard(Request $request)
     {
 
-        $data= DB::table('licence_report')->get();
-        //card data
-        $safety = DB::table('licence_report')->where('kategori', 'safety')->count();
-        $health = DB::table('licence_report')->where('kategori', 'health')->count();
-        $enviro = DB::table('licence_report')->where('kategori', 'environment')->count();
-        $total = DB::table('licence_report')->count('kategori');
-        $general = DB::table('licence_report')->where('kategori', 'umum')->count('kategori');
+        $data = DB::table('licence_report');
 
-        //bar chart
+        // Filter options
+        $filter_area = DB::table('licence_report')->select('area')->groupBy('area')->get();
+        $filter_status = DB::table('licence_report')->select('status')->groupBy('status')->get();
+
+        // Data card counts
+        $safetyQuery = DB::table('licence_report')->where('kategori', 'safety');
+        $healthQuery = DB::table('licence_report')->where('kategori', 'health');
+        $enviroQuery = DB::table('licence_report')->where('kategori', 'environment');
+        $totalQuery = DB::table('licence_report');
+        $generalQuery = DB::table('licence_report')->where('kategori', 'umum');
+
+
+
+        // Bar chart counts
         $labels = ['Umum', 'Environment', 'Safety', 'Health'];
         $notcomply = [];
         $notmandatory = [];
-        $comply= [];
+        $comply = [];
         foreach ($labels as $label) {
-            $notcomply[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Not Comply')->count();
-            $notmandatory[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Not Mandatory')->count();
-            $comply[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Comply')->count();
+            $notcomply[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Not Comply')->when($request->has('area') && $request->input('area') != '', function ($query) use ($request) {
+            return $query->where('area', $request->input('area'));
+            })->when($request->has('status') && $request->input('status') != '', function ($query) use ($request) {
+            return $query->where('status', $request->input('status'));
+            })->count();
+            $notmandatory[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Not Mandatory')->when($request->has('area') && $request->input('area') != '', function ($query) use ($request) {
+            return $query->where('area', $request->input('area'));
+            })->when($request->has('status') && $request->input('status') != '', function ($query) use ($request) {
+            return $query->where('status', $request->input('status'));
+            })->count();
+            $comply[] = DB::table('licence_report')->where('kategori', $label)->where('status_db', 'Comply')->when($request->has('area') && $request->input('area') != '', function ($query) use ($request) {
+            return $query->where('area', $request->input('area'));
+            })->when($request->has('status') && $request->input('status') != '', function ($query) use ($request) {
+            return $query->where('status', $request->input('status'));
+            })->count();
         }
 
-        //pie chart
+        // Pie chart counts
         $label = ['Not Mandatory', 'Not Comply', 'Comply'];
-        $pie=[];
-
-        foreach($label as $name){
-            $pie[] =  DB::table('licence_report')->where('status_db', $name)->count();
+        $pie = [];
+        foreach ($label as $name) {
+            $pie[] = DB::table('licence_report')
+            ->where('status_db', $name)
+            ->when($request->has('area') && $request->input('area') != '', function ($query) use ($request) {
+                return $query->where('area', $request->input('area'));
+            })
+            ->when($request->has('status') && $request->input('status') != '', function ($query) use ($request) {
+                return $query->where('status', $request->input('status'));
+            })
+            ->count();
         }
 
-        // filter
-        $filter_status = DB::table('licence_report')->groupBy('status')->get();
-        $filter_year = DB::table('licence_report')
-                ->select(DB::raw('YEAR(tanggal_terbit_izin) as year'))
-                ->groupBy(DB::raw('YEAR(tanggal_terbit_izin)'))
-                ->get();
-        $filter_area = DB::table('licence_report')->groupBy('area')->get();
+        // Area table
+        $sitesQuery = DB::table('licence_report')
+            ->select(
+                'area',
+                DB::raw('count(*) as total'),
+                DB::raw('count(case when status_db = "comply" then 1 end) as total_comply'),
+                DB::raw('count(case when status_db = "not comply" then 1 end) as total_not_comply'),
+                DB::raw('ROUND((count(case when status_db = "comply" then 1 end) / count(*)) * 100) as persen_comply'),
+                DB::raw('ROUND((count(case when status_db = "not comply" then 1 end) / count(*)) * 100) as persen_not_comply')
+            )->groupBy('area');
 
 
 
-        //area table
-        $sites = DB::table('licence_report')
-        ->select(
-            'area',
-            DB::raw('count(*) as total'),
-            DB::raw('count(case when status_db = "comply" then 1 end) as total_comply'),
-            DB::raw('count(case when status_db = "not comply" then 1 end) as total_not_comply'),
-            DB::raw('ROUND((count(case when status_db = "comply" then 1 end) / count(*)) * 100) as persen_comply'),
-            DB::raw('ROUND((count(case when status_db = "not comply" then 1 end) / count(*)) * 100) as persen_not_comply')
-        )
-        ->groupBy('area')
-        ->paginate(5);
-
-        // tipe table
-        $tipe = DB::table('licence_report')->select('tipe_izin',
-        DB::raw('count(case when status_db = "comply" then 1 end) as total_comply'),
-        DB::raw('count(case when status_db = "not comply" then 1 end) as total_not_comply'),
-        DB::raw('count(case when status_db = "not mandatory" then 1 end) as total_not_mandatory'),
-        DB::raw('count(*) as total'),)->groupBy('tipe_izin')->paginate(5);
+        // Tipe table
+        $tipeQuery = DB::table('licence_report')
+            ->select(
+                'tipe_izin',
+                DB::raw('count(case when status_db = "comply" then 1 end) as total_comply'),
+                DB::raw('count(case when status_db = "not comply" then 1 end) as total_not_comply'),
+                DB::raw('count(case when status_db = "not mandatory" then 1 end) as total_not_mandatory'),
+                DB::raw('count(*) as total')
+            )
+            ->groupBy('tipe_izin');
 
 
-        // progress table
-        $currentCek =  DB::table('licence_report')->select('progress')->get();
+
+
+
+        // Progress table
+        $currentCek = DB::table('licence_report')->select('progress')->get();
         $cekList = ["Arahan Dinas", "Penawaran Konsultan", "Proses Penawaran Cab/Site/PIN", "Submit Dokumen", "Verifikasi Lapangan", "Proses Sidang", "Izin Terbit"];
-        $Progress=[];
-        foreach($currentCek as $cek){
+        $Progress = [];
+
+        foreach ($currentCek as $cek) {
             $progressIndex = array_search($cek->progress, $cekList);
             if ($progressIndex !== false) {
                 $cekSelesai = $progressIndex + 1;
@@ -113,15 +137,47 @@ class FrontController extends Controller
                 $Progress[] = ($cekSelesai / $totalCek) * 100;
             }
         }
-        $data_progress = $data->map(function($currentCek, $key) use ($Progress) {
-            return (object) array_merge((array) $currentCek, ['persen' => $Progress[$key]]);
+
+        $data_progressQuery = DB::table('licence_report')->get()->map(function ($currentCek, $key) use ($Progress) {
+            return (object)array_merge((array)$currentCek, ['persen' => $Progress[$key]]);
         });
 
 
+        if ($request->has('status')&& $request->input('status') != '') {
+            $sitesQuery->where('status', $request->input('status'));
+            $tipeQuery->where('status', $request->input('status'));
+            $data_progressQuery = $data_progressQuery->where('status', $request->input('status'));
+            $safetyQuery->where('status', $request->input('status'));
+            $healthQuery->where('status', $request->input('status'));
+            $enviroQuery->where('status', $request->input('status'));
+            $totalQuery->where('status', $request->input('status'));
+            $generalQuery->where('status_db', $request->input('status'));
+        }
+
+        if ($request->has('area')&& $request->input('area') != '') {
+            $sitesQuery->where('area', $request->input('area'));
+            $tipeQuery->where('area', $request->input('area'));
+            $data_progressQuery = $data_progressQuery->where('area', $request->input('area'));
+            $safetyQuery->where('area', $request->input('area'));
+            $healthQuery->where('area', $request->input('area'));
+            $enviroQuery->where('area', $request->input('area'));
+            $totalQuery->where('area', $request->input('area'));
+            $generalQuery->where('area', $request->input('area'));
+        }
 
 
-        return view('Front.legal-compliance.dashboard',compact('data','safety','health','enviro','total','general','notcomply','notmandatory','comply','pie','sites','tipe', 'data_progress','filter_status','filter_area','filter_year'));
+        $safety = $safetyQuery->count();
+        $health = $healthQuery ->count();
+        $enviro = $enviroQuery ->count();
+        $total = $totalQuery->count('kategori');
+        $general = $generalQuery->count();
+        $sites = $sitesQuery->paginate(5);
+        $tipe = $tipeQuery->paginate(5);
+        $data_progress = $data_progressQuery;
+
+        return view('Front.legal-compliance.dashboard', compact('data', 'safety', 'health', 'enviro', 'total', 'general', 'notcomply', 'notmandatory', 'comply', 'pie', 'sites', 'tipe', 'data_progress', 'filter_area', 'filter_status'));
     }
+
 
 
     public function acc_report()
