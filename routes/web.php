@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     // new feature dashboard legal compliance
     Route::get('/dashboard', [FrontController::class, 'dashboard'])->name('dashboard');
     Route::get('/acc-report', [FrontController::class, 'acc_report'])->name('acc-report');
+    Route::post('/acc-report',[FrontController::class, 'post_acc_report'])->name('post-acc-report');
     Route::get('/repository', [FrontController::class, 'repository'])->name('repository');
     Route::get('/licence-report', [FrontController::class, 'licence_report'])->name('licence-report');
     Route::get('/licence-report/add', [FrontController::class, 'add_licence_report'])->name('add-licence-report');
