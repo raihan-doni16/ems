@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                              <!-- Approval Modal -->
-                             <div class="modal " id="approvalModal{{$data->id}}" tabindex="-1" aria-labelledby="approvalModalLabel{{$data->id}}" aria-hidden="true">
+                             <div class="modal" id="approvalModal{{$data->id}}" tabindex="-1" aria-labelledby="approvalModalLabel{{$data->id}}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -47,33 +47,35 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <form action="{{ route('post-edit-licence-report') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                                    <form action="{{ route('approve') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="licence_id" value="{{ $data->id }}">
                                                         <div class="mt-4">
-                                                            <input type="hidden" name="approve" id="approve" value=1>
                                                             <label for="branch">Branch</label>
-                                                            <input type="text" class="form-control" id="branch" name="branch" value="{{$data->area}}" disabled>
-                                                            <label for="branch">Kategori</label>
-                                                            <input type="text" class="form-control" id="branch" name="branch" value="{{$data->kategori}}" disabled>
-                                                            <label for="branch">Klasifikasi</label>
-                                                            <input type="text" class="form-control" id="branch" name="branch" value="{{$data->klasifikasi}}" disabled>
-                                                            <label for="branch">Tanggal Mulai Izin</label>
-                                                            <input type="text" class="form-control" id="branch" name="branch" value="{{$data->tanggal_terbit_izin}}" disabled>
-                                                            <label for="branch">Tanggal Habis Izin</label>
-                                                            <input type="text" class="form-control" id="branch" name="branch" value="{{$data->tanggal_habis_izin}}" disabled>
-                                                            <label for="keterangan">Keterangan</label>
-                                                            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"></textarea>
+                                                            <input type="text" class="form-control" id="branch" value="{{ $data->area }}" disabled>
+                                                            <label for="kategori">Kategori</label>
+                                                            <input type="text" class="form-control" id="kategori" value="{{ $data->kategori }}" disabled>
+                                                            <label for="klasifikasi">Klasifikasi</label>
+                                                            <input type="text" class="form-control" id="klasifikasi" value="{{ $data->klasifikasi }}" disabled>
+                                                            <label for="tanggal_terbit_izin">Tanggal Mulai Izin</label>
+                                                            <input type="text" class="form-control" id="tanggal_terbit_izin" value="{{ $data->tanggal_terbit_izin }}" disabled>
+                                                            <label for="tanggal_habis_izin">Tanggal Habis Izin</label>
+                                                            <input type="text" class="form-control" id="tanggal_habis_izin" value="{{ $data->tanggal_habis_izin }}" disabled>
+                                                            <label for="comment">Comment</label>
+                                                            <textarea class="form-control" id="comment" name="comment" placeholder="Masukkan Keterangan"></textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success">Approve</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Approve</button>
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             @endif
                             @endforeach
                         </div>

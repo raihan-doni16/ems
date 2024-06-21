@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('status_perizinan');
             $table->string('status_db');
             $table->string('status_lanjut');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->string('approve');
             $table->string('progress');
             $table->string('file')->nullable();

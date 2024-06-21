@@ -111,7 +111,8 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="file">Upload File</label>
-                    <input type="file" class="form-control" id="file" name="file" required>
+                    <input type="file" class="form-control" id="file" name="file" accept=".pdf">
+                    <small class="text-muted">File must be in PDF format.</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="keterangan">Keterangan</label>

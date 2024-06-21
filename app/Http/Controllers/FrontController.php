@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Licence_report;
-
+use App\Models\Comment;
 class FrontController extends Controller
 {
     public function home()
@@ -216,9 +216,9 @@ class FrontController extends Controller
             'status_perizinan' => 'required|string|max:255',
             'status_db' => 'required|string|max:255',
             'status_lanjut' => 'required|string|max:255',
-            'keterangan' => 'required|string|max:255',
+            'keterangan' => 'string|max:255',
             'progress' => 'nullable|string|max:255',
-            'file' => 'nullable|file|max:10240',
+            'file' => 'nullable|file|mimes:pdf|max:10240',
         ]);
 
         $data = $request->only([
@@ -273,9 +273,9 @@ class FrontController extends Controller
         'status_perizinan' => 'required|string|max:255',
         'status_db' => 'required|string|max:255',
         'status_lanjut' => 'required|string|max:255',
-        'keterangan' => 'required|string|max:255',
+        'keterangan' => 'nullable|string|max:255',
         'progress' => 'nullable|string|max:255',
-        'file' => 'nullable|file|max:10240',
+        'file' => 'nullable|file|mimes:pdf|max:10240',
     ]);
     $licenceReport = licence_report::findOrFail($request->id);
 
@@ -316,36 +316,25 @@ class FrontController extends Controller
         }
     }
 
-    public function post_acc_report(Request $request){
-        $request->validate([
-            'area' => 'required|string|max:255',
-            'tipe_bisnis' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
-            'klasifikasi' => 'required|string|max:255',
-            'tipe_izin' => 'required|string|max:255',
-            'nib' => 'required|string|max:255',
-            'nomor_izin' => 'required|string|max:255',
-            'tanggal_terbit_izin' => 'required|string|max:255',
-            'tanggal_habis_izin' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-            'status_perizinan' => 'required|string|max:255',
-            'status_db' => 'required|string|max:255',
-            'status_lanjut' => 'required|string|max:255',
-            'keterangan' => 'required|string|max:255',
-            'progress' => 'nullable|string|max:255',
-            'file' => 'nullable|file|max:10240',
-        ]);
-        $licenceReport = licence_report::findOrFail($request->id);
+    public function approve(Request $request)
+    {
+        $licenceReport = licence_report::find($request->input('licence_id'));
+
+        if ($licenceReport) {
+            // Update the approve field to 1
+            $licenceReport->approve = 1;
+            $licenceReport->save();
+        }
+
 
         $data = $request->only([
-            'area', 'tipe_bisnis', 'kategori', 'klasifikasi', 'tipe_izin', 'nib',
-            'nomor_izin', 'tanggal_terbit_izin', 'tanggal_habis_izin', 'status',
-            'status_perizinan', 'status_db', 'status_lanjut', 'keterangan', 'progress'
+            'licence_id', 'comment'
         ]);
-        $data['approve'] = $request->input('approve', '1');
+        $insert = Comment::create($data);
 
-        $licenceReport->update($data);
-        return redirect()->back()->with('success', 'Report submitted successfully!');
+
+        return redirect()->back()->with('success', 'Licence updated successfully.');
     }
+
 
 }

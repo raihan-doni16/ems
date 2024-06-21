@@ -106,7 +106,8 @@
                     @if(isset($data->file))
                         <p>Current file: <a href="{{ url($data->file) }}" target="_blank">{{ $data->file }}</a></p>
                     @endif
-                    <input type="file" class="form-control" id="file" name="file">
+                    <input type="file" class="form-control" id="file" name="file"
+                     accept=".pdf">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="keterangan">Keterangan</label>

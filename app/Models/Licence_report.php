@@ -12,4 +12,10 @@ class Licence_report extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['area', 'tipe_bisnis','kategori','klasifikasi','tipe_izin','nib','nomor_izin','tanggal_terbit_izin','tanggal_habis_izin','status','status_perizinan','status_db','status_lanjut','keterangan','file','progress','approve'];
 
+
+    public function comment()
+    {
+        return $this->hasOne(Comment::class);
+        
+    }
 }
