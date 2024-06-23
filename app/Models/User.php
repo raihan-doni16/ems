@@ -55,6 +55,11 @@ class User extends Authenticatable
      * @param $value
     * @return string
     */
+    public function user()
+    {
+        return $this->belongsToMany(repository::class);
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

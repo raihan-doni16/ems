@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Licence_report;
 use App\Models\Comment;
+use App\Models\Repository;
 class FrontController extends Controller
 {
     public function home()
@@ -15,7 +16,7 @@ class FrontController extends Controller
         return view('front.home');
     }
 
-    // Menampilkan halaman tentang
+    // Menampilkan halaman about
     public function about()
     {
         return view('front.about');
@@ -187,10 +188,91 @@ class FrontController extends Controller
     }
     public function repository()
     {
-        return view("Front.legal-compliance.repository");
+
+        $repo = DB::table('repository')
+            ->join('users', 'repository.user_id', '=', 'users.id')
+            ->select('repository.*', 'users.email')
+            ->get();
+        return view("Front.legal-compliance.repository.repository",compact('repo'));
     }
-    public function licence_report()
+    public function add_repository()
     {
+        return view('front.legal-compliance.repository.add-repository');
+    }
+    public function post_repository(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'file' => 'nullable|file|mimes:pdf|max:10240',
+        ]);
+
+        $data = $request->only([
+            'name', 'category', 'year'
+        ]);
+        $data['user_id'] = auth()->user()->id;
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $extension =$file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $path ='docs/file/';
+            $file->move($path,$filename);
+            $data['file'] = $path .$filename;
+        }
+
+
+        $insert = repository::create($data);
+
+
+        return redirect()->route('repository')->with('success', 'Repository Created successfully.');
+    }
+    public function edit_repository($id){
+        $repo= repository::find($id);
+        return view('front.legal-compliance.repository.edit-repository',compact('repo'));
+    }
+    public function post_edit_repository(Request $request)
+    {
+        $repo = repository::findOrFail($request->id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'file' => 'nullable|file|mimes:pdf|max:10240',
+        ]);
+
+        $data = $request->only([
+            'name', 'category', 'year'
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $path = 'docs/file/';
+            $file->move(public_path($path), $filename);
+            $data['file'] = $path . $filename;
+
+            if ($repo->file && file_exists(public_path($repo->file))) {
+                unlink(public_path($repo->file));
+            }
+        }
+
+        $repo->update($data);
+        return redirect()->route('repository')->with('success', 'Data updated successfully.');
+    }
+    public function delete_repository($id)
+    {
+        try {
+            $hasil = repository::findOrFail($id);
+            $hasil->delete();
+            return redirect()->route('repository')->with('success', 'Data has been deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete data.');
+        }
+    }
+    public function licence_report(){
         $licenceReport = DB::table('licence_report')->get();
         return view("Front.legal-compliance.licence-report.licence-report",compact('licenceReport'));
     }
@@ -200,8 +282,7 @@ class FrontController extends Controller
         return view('front.legal-compliance.licence-report.add-licence');
     }
 
-    public function post_licence_report(Request $request)
-    {
+    public function post_licence_report(Request $request) {
         $request->validate([
             'area' => 'required|string|max:255',
             'tipe_bisnis' => 'required|string|max:255',
@@ -216,7 +297,6 @@ class FrontController extends Controller
             'status_perizinan' => 'required|string|max:255',
             'status_db' => 'required|string|max:255',
             'status_lanjut' => 'required|string|max:255',
-            'keterangan' => 'string|max:255',
             'progress' => 'nullable|string|max:255',
             'file' => 'nullable|file|mimes:pdf|max:10240',
         ]);
@@ -242,11 +322,6 @@ class FrontController extends Controller
 
         $insert = Licence_report::create($data);
 
-        if ($insert) {
-            flash()->success('Success', 'Content created successfully!');
-        } else {
-            flash()->error('Error', 'Failed to create content!');
-        }
 
         return redirect()->route('licence-report')->with('success', 'Data Created successfully.');
     }

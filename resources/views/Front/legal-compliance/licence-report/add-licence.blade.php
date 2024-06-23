@@ -116,7 +116,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="keterangan">Keterangan</label>
-                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"></textarea>
+                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" nullable></textarea>
                 </div>
 
 
