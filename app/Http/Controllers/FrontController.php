@@ -272,6 +272,17 @@ class FrontController extends Controller
             return redirect()->back()->with('error', 'Failed to delete data.');
         }
     }
+
+    public function search(Request $request){
+        $search = $request->input('search');
+        $repo = Repository::where('name', 'like', "%$search%")
+            ->join('users', 'repository.user_id', '=', 'users.id')
+            ->select('repository.*', 'users.email')
+            ->get();
+
+        return view('Front.legal-compliance.repository.repository',compact('repo'));
+
+    }
     public function licence_report(){
         $licenceReport = DB::table('licence_report')->get();
         return view("Front.legal-compliance.licence-report.licence-report",compact('licenceReport'));

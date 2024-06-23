@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/acc-report', [FrontController::class, 'acc_report'])->name('acc-report');
     Route::post('/approve',[FrontController::class, 'approve'])->name('approve');
     Route::get('/repository', [FrontController::class, 'repository'])->name('repository');
+    Route::get('/repository/search', [FrontController::class, 'search'])->name('search');
     Route::get('/repository/add', [FrontController::class, 'add_repository'])->name('add-repository');
     Route::post('/repository/post', [FrontController::class, 'post_repository'])->name('post-repository');
     Route::get('/repository/edit/{id}', [FrontController::class, 'edit_repository'])->name('edit-repository');
