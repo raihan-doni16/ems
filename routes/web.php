@@ -160,7 +160,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ppa/legal-edit-post', [PageController::class, 'legal_edit_post'])->name('ppa.legal-edit-post');
     Route::get('/ppa/legal-delete/{id}', [PageController::class, 'legal_delete'])->name('ppa.legal-delete');
 
-
+  
 
 
 	// Route::get('/{page}', [PageController::class, 'index'])->name('page');

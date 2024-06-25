@@ -31,6 +31,24 @@
 .form-select {
     border-left: none;
 }
+.nav-link {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link .badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    padding: 3px 5px;
+    border-radius: 50%;
+    background-color: #afc1f0; /* Warna latar belakang badge */
+    color: white; /* Warna teks badge */
+    font-size: 8px;
+    font-weight: bold;
+}
+
+
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;

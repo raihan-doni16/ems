@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Licence_report;
 use App\Models\Comment;
 use App\Models\Repository;
+use App\Notifications\LicenceReport;
+use App\Notifications\Approve;
+use App\Notifications\RepositoryNotif;
+use Illuminate\Support\Facades\Auth;
 class FrontController extends Controller
 {
     public function home()
@@ -224,7 +228,7 @@ class FrontController extends Controller
 
 
         $insert = repository::create($data);
-
+        Auth::user()->notify(new RepositoryNotif($data));
 
         return redirect()->route('repository')->with('success', 'Repository Created successfully.');
     }
@@ -333,6 +337,7 @@ class FrontController extends Controller
 
         $insert = Licence_report::create($data);
 
+        Auth::user()->notify(new licenceReport($data));
 
         return redirect()->route('licence-report')->with('success', 'Data Created successfully.');
     }
@@ -417,8 +422,13 @@ class FrontController extends Controller
             'licence_id', 'comment'
         ]);
         $insert = Comment::create($data);
-
-
+        $notificationData = [
+            'comment' => $data['comment'],
+            'area' => $licenceReport->area,
+            'tipe_bisnis' => $licenceReport->tipe_bisnis,
+            'klasifikasi' => $licenceReport->klasifikasi,
+        ];
+        Auth::user()->notify(new Approve($notificationData));
         return redirect()->back()->with('success', 'Licence updated successfully.');
     }
 
