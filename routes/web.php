@@ -22,6 +22,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FrontController;
 
 Route::get('/welcome', function () {
@@ -34,7 +35,9 @@ Route::get('/front-ppa', [FrontController::class, 'ppa'])->name('front-ppa');
 Route::get('/front-plb3', [FrontController::class, 'plb3'])->name('front-plb3');
 Route::get('/front-legal', [FrontController::class, 'legalCompliance'])->name('front-legal');
 
+Route::get('/auth/google/redirect',[GoogleController::class, 'redirectToGoogle'])->name('google.login');
 
+Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 
 // Route::get('/', function () {return redirect('/home');})->middleware('auth');
@@ -160,7 +163,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ppa/legal-edit-post', [PageController::class, 'legal_edit_post'])->name('ppa.legal-edit-post');
     Route::get('/ppa/legal-delete/{id}', [PageController::class, 'legal_delete'])->name('ppa.legal-delete');
 
-  
+
 
 
 	// Route::get('/{page}', [PageController::class, 'index'])->name('page');

@@ -20,11 +20,11 @@
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'admin@enviro.com' }}" aria-label="Email">
+                                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'admin@enviro.com' }}" aria-label="Email" required>
                                             @error('email') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                         <div class="flex flex-col mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" value="secret" >
+                                            <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" value="secret" required>
                                             @error('password') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                         <div class="form-check form-switch">
@@ -33,9 +33,13 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg color-bg btn-lg w-100 mt-4 mb-0">Sign in</button>
+                                            <a href="{{route('google.login')}}" class="btn btn-lg btn-lg w-80 mt-4 mb-0">
+                                                <i class="fa-brands fa-google"></i> Login with Google
+                                            </a>
                                         </div>
                                     </form>
                                 </div>
+
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-1 text-sm mx-auto">
                                         Forgot you password? Reset your password

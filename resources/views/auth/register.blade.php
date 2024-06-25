@@ -41,6 +41,9 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg color-bg btn-lg w-100 mt-4 mb-0">Sign up</button>
+                                            <a href="{{route('google.login')}}" class="btn btn-lg btn-lg w-80 mt-4 mb-0">
+                                                <i class="fa-brands fa-google"></i> Sign Up With Google
+                                            </a>
                                         </div>
                                         <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route('login') }}"
                                                 class="text-dark font-weight-bolder">Sign in</a></p>
