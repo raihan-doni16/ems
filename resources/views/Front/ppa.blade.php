@@ -4,22 +4,22 @@
 @section('content')
 <!-- Hero Section -->
 <div id="home" class="hero p-5">
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-md-8 order-md-1 order-2">
+            <div class="col-md-8 order-md-1 order-2 mt-3 animate__animated animate__backInLeft">
                 <h4 class="mt-5 pt-4 custom-h4"><span class="custom-color">PPA </span> (Pengendalian Pencemaran Air Limbah & Efisiensi Air Bersih)</h4>
                 <p>Lorem ipsum dolor sit amet consectetur. Ipsum tortor mi viverra urna. Magna lacus nunc aliquet mauris nulla pellentesque volutpat eget vestibulum. Id lacus cursus sapien mollis neque nunc diam arcu. Dui parturient vulputate nec hendrerit aliquam erat. Justo rhoncus nisi cras semper purus vestibulum. Ullamcorper nulla ornare proin commodo nulla mattis etiam.</p>
             </div>
             <div class="col-md-4 order-md-2 order-1">
-                <img src="img/ppa-img.png" class="img-fluid" alt="Legal Compliance Image">
+                <img src="img/ppa-img.png" class="img-move" alt="ppa Image" style="height:340px">
             </div>
         </div>
     </div>
-    <div class="container mt-5">
+    <div class="container ">
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/office.jpg" class="card-img-top" alt="Card 1 Image">
+                    <img src="img/office.jpg" class="card-img-top" style="height:200px" alt="office Image">
                     <div class="card-body">
                         <h5 class="card-title text-center">Office</h5>
 
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/workshop.jpg" class="card-img-top" alt="Card 2 Image">
+                    <img src="img/workshop.jpg" class="card-img-top" style="height:200px" alt="workshop Image">
                     <div class="card-body">
                         <h5 class="card-title text-center">Workshop</h5>
 
@@ -37,18 +37,18 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/warehouse.jpg" class="card-img-top" alt="Card 3 Image">
+                    <img src="img/warehouse.jpg" class="card-img-top" style="height:200px" alt="warehouse Image">
                     <div class="card-body">
-                        <h5 class="card-title text-Center">Warehouse</h5>
+                        <h5 class="card-title text-center">Warehouse</h5>
 
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/sarana-pendukung.jpg" class="card-img-top" alt="Card 4 Image">
+                    <img src="img/sarana-pendukung.jpg" class="card-img-top" style="height:200px" alt="sarana-pendukung Image">
                     <div class="card-body">
-                        <h5 class="card-title">Sarana Pendukung</h5>
+                        <h5 class="card-title text-center">Sarana Pendukung</h5>
 
                     </div>
                 </div>
@@ -58,7 +58,7 @@
 </div>
 
 <!-- legal dashboard -->
-<div id="about" class="content-section mb-3">
+<div id="ppa" class="content-section mb-3">
     <div class="container mt-5 pt-5 pb-5">
         <h2>Pengelolaan<span class="custom-color"> Air Limbah</span></h2>
         <p>We provide comprehensive legal compliance services to ensure your business adheres to all relevant
@@ -67,37 +67,38 @@
         <div class="row mt-5">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/office.jpg" class="card-img-top" alt="Card 1 Image">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Office</h5>
+                    <img src="img/office.jpg" class="card-img-top p-3" style="height: 200px" alt="Card 1 Image">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title ">IPAL Domestik</h5>
+                        <P>STP 1</P>
 
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/workshop.jpg" class="card-img-top" alt="Card 2 Image">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Workshop</h5>
-
+                    <img src="img/workshop.jpg" class="card-img-top p-3" style="height: 200px" alt="Card 2 Image">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title ">IPAL Domestik</h5>
+                        <P>STP 2</P>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/warehouse.jpg" class="card-img-top" alt="Card 3 Image">
-                    <div class="card-body">
-                        <h5 class="card-title text-Center">Warehouse</h5>
-
+                    <img src="img/warehouse.jpg" class="card-img-top p-3" style="height: 200px" alt="Card 3 Image">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title ">IPAL Domestik</h5>
+                        <P>STP 3</P>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/sarana-pendukung.jpg" class="card-img-top" alt="Card 4 Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Sarana Pendukung</h5>
-
+                    <img src="img/sarana-pendukung.jpg" class="card-img-top p-3"  style="height: 200px" alt="Card 4 Image">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title">IPAL Produksi</h5>
+                        <P>WWTP</P>
                     </div>
                 </div>
             </div>

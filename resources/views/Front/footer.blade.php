@@ -4,8 +4,8 @@
     </div>
     <div class="right">
         <div class="images">
-            <img src="{{asset('img/move-black.png')}}" alt="Right Image 1" class="pe-2" >
-            <img src="{{asset('img/ut-black.png')}}" alt="Right Image 2" class="pe-2">
+            <img src="{{asset('img/move-black.png')}}" alt="Right Image 1"  >
+            <img src="{{asset('img/ut-black.png')}}" alt="Right Image 2" >
         </div>
         <div class="text">
             <div class="col-6 ms-5">

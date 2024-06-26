@@ -5,8 +5,8 @@
     <div id="home" class="hero p-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 order-md-1 order-2">
-                    <h4 class="mt-5 pt-4 custom-h4"><span class="custom-color">ENVIRONMENT</span> MANAGEMENT SYSTEM</h4>
+                <div class="col-md-8 order-md-1 order-2 mt-5 pt-5 animate__animated animate__backInDown">
+                    <h4 class="mt-5 pt-4 custom-h4 "><span class="custom-color">ENVIRONMENT</span> MANAGEMENT SYSTEM</h4>
                     <p>Selamat datang di laman mikrosite EMS.
                         Sebagai Perusahaan yang berkomitmen terhadap peningkatan mutu di setiap fungsi Manajemen, serta
                         selalu mempertimbangkan Aspek dan Dampak Lingkungan,
@@ -14,67 +14,69 @@
                         alam untuk Indonesia yang lebih sehat.</p>
                 </div>
                 <div class="col-md-4 order-md-2 order-1">
-                    <img src="img/home-img.png" class="img-fluid" alt="Legal Compliance Image">
+                    <img src="img/home-img.png" class="img-move" alt="Legal Compliance Image" >
                 </div>
+            </div>
             </div>
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 240" class="wave">
-        <path fill="000000" fill-opacity="0.25"
+        <path fill="rgba(0, 0, 0, 0.25)"
             d="M0,64L80,53.3C160,43,320,21,480,18.7C640,16,800,32,960,53.3C1120,75,1280,96,1360,106.7L1440,117L1440,240L1360,240C1280,240,1120,240,960,240C800,240,640,240,480,240C320,240,160,240,80,240L0,240Z">
         </path>
-        <path fill="000000" fill-opacity="0.25"
+        <path fill="rgba(0, 0, 0, 0.25)"
             d="M0,128L80,106.7C160,85,320,43,480,16C640,-11,800,-2,960,14.7C1120,31,1280,53,1360,74L1440,95L1440,240L1360,240C1280,240,1120,240,960,240C800,240,640,240,480,240C320,240,160,240,80,240L0,240Z">
         </path>
     </svg>
 
 
 
+
     <!-- legal dashboard -->
     <div id="home-bg"
-        class="content-section mb-3 "style="background-image: url('{{ asset('img/bg-footer.png') }}'); background-size: auto; background-repeat: no-repeat; background-position: bottom;"">
+        class="content-section mb-3"style="background-image: url('{{ asset('img/bg-footer.png') }}'); background-size: auto; background-repeat: no-repeat; background-position: bottom;">
             <div class="container pt-5">
                 <h3 class="text-center mb-4">Hasil Program Kinerja Perusahaan bidang Lingkungan Hidup Periode Juni 2022
                     s.d Juli 2023</h3>
                 <hr class="bg-success" style="margin: 0 auto 20px; width: 400px; border-width: 5px;">
-                <div class="row pt-5 pb-5">
-                    <div class="col-md-3" >
-                        <div class="card" style="height: 510px;">
+                <div class="row pt-5 pb-5 ">
+                    <div class="col-md-3 " >
+                        <div class="card bg-transparent" style="height: 510px; border: 2px solid gold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             <img src="{{ asset('img/air.png') }}" class="card-img-top p-4" alt="Placeholder Image">
-                            <div class="card-body bg-white text-center">
+                            <div class="card-body bg-transparent text-center text-white">
                                 <h5 class="card-title">Efisiensi Air</h5>
-                                <h6 class="card-text">624.455,05 m2</h6>
-                                <p class="card-text">UT Berkontribusi dalam melindungi sumber daya air secara menyeluruh dengan mengembalikan lebih dari 100% air yang dimanfaatkan (positive water balance)</p>
+                                <h6 class="card-text text-white">624.455,05 m<sup>3</sup></h6>
+                                <p class="card-text text-white">UT Berkontribusi dalam melindungi sumber daya air secara menyeluruh dengan mengembalikan lebih dari 100% air yang dimanfaatkan (positive water balance)</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3" >
-                        <div class="card"  style="height: 510px;">
+                        <div class="card bg-transparent" style="height: 510px; border: 2px solid gold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             <img src="{{ asset('img/emisi.png') }}" class="card-img-top p-4" alt="Placeholder Image">
-                            <div class="card-body bg-white text-center">
+                            <div class="card-body bg-transparent text-center text-white">
                                 <h5 class="card-title">Penurunan Emisi GRK</h5>
-                                <h6 class="card-text">112.886.542,35 TonCO2</h6>
-                                <p class="card-text">UT memerangi perubahan iklim dengan mengurangi jejak karbon serta meminimalisir pelepasan karbon ke udara menuju zero nett carbon</p>
+                                <h6 class="card-text text-white">112.886.542,35 TonCO2</h6>
+                                <p class="card-text text-white">UT memerangi perubahan iklim dengan mengurangi jejak karbon serta meminimalisir pelepasan karbon ke udara menuju zero nett carbon</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card " style="height: 510px;">
+                        <div class="card bg-transparent" style="height: 510px; border: 2px solid gold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             <img src="{{ asset('img/b3.png') }}" class="card-img-top p-4" alt="Placeholder Image">
-                            <div class="card-body bg-white text-center">
+                            <div class="card-body bg-transparent text-center text-white">
                                 <h5 class="card-title">3R Limbah B3</h5>
-                                <h6 class="card-text">25.264.063,89 Ton</h6>
-                                <p class="card-text">UT akan terus berinovasi dalam upaya mengurangi limbah b3 disumber untuk bisnis yang berkelanjutan</p>
+                                <h6 class="card-text text-white">25.264.063,89 Ton</h6>
+                                <p class="card-text text-white">UT akan terus berinovasi dalam upaya mengurangi limbah b3 disumber untuk bisnis yang berkelanjutan</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card" style="height: 510px;">
+                        <div class="card bg-transparent" style="height: 510px; border: 2px solid gold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             <img src="{{ asset('img/nb3.png') }}" class="card-img-top p-4" alt="Placeholder Image">
-                            <div class="card-body bg-white text-center">
+                            <div class="card-body bg-transparent text-center text-white">
                                 <h5 class="card-title">3R Limbah NB3</h5>
-                                <h6 class="card-text">10.442.808,52 Ton</h6>
-                                <p class="card-text">UT selalu berinovasi dalam mengatasi persampahan pada setiap lini bisnis dengan menerapkan program 6R</p>
+                                <h6 class="card-text text-white">10.442.808,52 Ton</h6>
+                                <p class="card-text text-white">UT selalu berinovasi dalam mengatasi persampahan pada setiap lini bisnis dengan menerapkan program 6R</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +89,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mt-5">
-                        <img src="{{ asset('img/home-dashboard.jpg') }}" class="img-fluid rounded" alt="About Us">
+                        <img src="{{ asset('img/home-dashboard.jpg') }}" class="img-fluid rounded " alt="About Us">
                     </div>
                     <div class="col-lg-6 mt-5">
                         <h2><span class="custom-color" >Enviromental </span>Dashboard</h2>

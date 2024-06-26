@@ -6,12 +6,12 @@
 <div id="home" class="hero p-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 order-md-1 order-2">
+            <div class="col-md-8 order-md-1 order-2 mt-3 animate__animated animate__backInLeft ">
                 <h4 class="mt-5 pt-4 custom-h4"><span class="custom-color">PLB3</span>( Pengelolaan Limbah  B3 )</h4>
                 <p>Lorem ipsum dolor sit amet consectetur. Ipsum tortor mi viverra urna. Magna lacus nunc aliquet mauris nulla pellentesque volutpat eget vestibulum. Id lacus cursus sapien mollis neque nunc diam arcu. Dui parturient vulputate nec hendrerit aliquam erat. Justo rhoncus nisi cras semper purus vestibulum. Ullamcorper nulla ornare proin commodo nulla mattis etiam.</p>
             </div>
             <div class="col-md-4 order-md-2 order-1">
-                <img src="img/plb3.png" class="img-fluid" alt="Legal Compliance Image">
+                <img src="img/plb3.png" class="img-move" alt="Legal Compliance Image">
             </div>
         </div>
     </div>

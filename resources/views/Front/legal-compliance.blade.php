@@ -5,33 +5,35 @@
 <!-- Hero Section -->
 <div id="home" class="hero p-5">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 order-md-1 order-2">
+        <div class="row ">
+            <div class="col-md-8 order-md-1 order-2 mt-3 animate__animated animate__backInLeft ">
                 <h4 class="mt-5 pt-4 custom-h4"><span class="custom-color">Legal</span> Compliance</h4>
                 <p>Lorem ipsum dolor sit amet consectetur. Ipsum tortor mi viverra urna. Magna lacus nunc aliquet mauris nulla pellentesque volutpat eget vestibulum. Id lacus cursus sapien mollis neque nunc diam arcu. Dui parturient vulputate nec hendrerit aliquam erat. Justo rhoncus nisi cras semper purus vestibulum. Ullamcorper nulla ornare proin commodo nulla mattis etiam.</p>
             </div>
             <div class="col-md-4 order-md-2 order-1">
-                <img src="img/legal-img.png" class="img-fluid" alt="Legal Compliance Image">
+                <img src="img/legal-img.png" class="img-move" style="height: 350px" alt="Legal Compliance Image">
             </div>
         </div>
     </div>
 </div>
 
 <!-- legal dashboard -->
-<div id="about" class="content-section mb-3">
+<div id="about" class="content-section mt-5 mb-3" style="height: 600px">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-6">
-                <img src="{{asset('img/legal-dash.png')}}" class="img-fluid" alt="About Us">
+                <img src="{{asset('img/legal-dash.png')}}" class="img-fluid mt-5" alt="legal img">
             </div>
-            <div class="col-lg-6 mt-5">
-                <h2>Legal Compliance <span>Dashboard</span></h2>
+            <div class="col-lg-6" style="margin-top: 150px;">
+                <h2 class="mt-5">Legal Compliance <span>Dashboard</span></h2>
                 <p>We provide comprehensive legal compliance services to ensure your business adheres to all relevant laws and regulations. Our experienced team of legal professionals is here to help you navigate the complex legal landscape and avoid potential pitfalls.</p>
                 <a href="{{route('dashboard')}}" class="btn btn-warning">Lihat Sekarang</a>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- flow Section -->
 <div id="services" class="content-section pt-5 pb-5">
@@ -48,8 +50,7 @@
                                 <i class="bi bi-1-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Koordinasi Dengan Head Office</h6>
                             </div>
                         </div>
                     </div>
@@ -63,8 +64,7 @@
                                 <i class="bi bi-2-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Penampiasan Mandiri <span style="color:rgb(245, 245, 245)">Mandiri</span></h6>
                             </div>
                         </div>
                     </div>
@@ -78,14 +78,12 @@
                                 <i class="bi bi-3-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Penyusuan Kajian/ Standar Teknis</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Baris kedua -->
             <div class="col-lg-4 mb-4">
                 <div class="card text-left" style="border-radius: 10px;">
                     <div class="card-body">
@@ -94,8 +92,7 @@
                                 <i class="bi bi-4-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Pengajuan Permohonan Persetujuan Teknis</h6>
                             </div>
                         </div>
                     </div>
@@ -109,8 +106,7 @@
                                 <i class="bi bi-5-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Pengajuan Permohonan Persetujuan Lingkungan</h6>
                             </div>
                         </div>
                     </div>
@@ -124,8 +120,7 @@
                                 <i class="bi bi-6-circle text-warning "style="font-size: 2rem;"></i>
                             </div>
                             <div class="col-md-9">
-                                <h6 class="card-title">Compliance Audits</h6>
-                                <p class="card-text">We conduct</p>
+                                <h6 class="card-title p-2">Pengajuan Permohonan SLO</h6>
                             </div>
                         </div>
                     </div>
