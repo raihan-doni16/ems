@@ -1,15 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container position-sticky z-index-sticky top-0">
-
-    </div>
-    <main class="main-content  mt-0">
         <section>
-            <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto " style="margin-top: 110px">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Sign Up
@@ -46,22 +41,16 @@
                                             </a>
                                         </div>
                                         <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route('login') }}"
-                                                class="text-dark font-weight-bolder">Sign in</a></p>
+                                                class="text-success font-weight-bolder">Sign in</a></p>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-
-                                <img src="img/login-img.png" alt="login" class="login-img">
-                                <h4 class="login-right">Environment Management System</h4>
-                            </div>
-
+                        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column" style="padding-top: -20px;">
+                            <img src="img/login-img.png" alt="login" class="login-img img-move" style="margin-bottom: -10px;">
+                            <h4 class="login-right" style="margin-top: -10px;">Environment Management System</h4>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
-    </main>
 @endsection

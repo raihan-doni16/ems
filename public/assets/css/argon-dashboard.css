@@ -5,8 +5,24 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .img-move {
+    animation: moveUpDown 1.5s infinite;
+}
 
- 
+@keyframes moveUpDown {
+    0% {
+      transform: translateY(-5%);
+    }
+
+    50% {
+      transform: translateY(5%);
+    }
+
+    100% {
+      transform: translateY(-5%);
+    }
+}
+
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;

@@ -12,7 +12,7 @@
                             <input type="text" id="search" name="search" class="form-control" placeholder="Type here..." value="{{ old('search') }}">
                         </div>
                     </form>
-                    <div class="justify-content-end">
+                    {{-- <div class="justify-content-end">
                         <a class="me-3">
                             <i class="fa-solid fa-filter me-2"></i>
                             Filter
@@ -20,7 +20,7 @@
                         <a class="me-3">
                             <i class="fa-solid fa-sort me-2"></i>
                             Sort
-                        </a>
+                        </a> --}}
                         <a href="{{ route('add-repository') }}" class="btn btn-sm btn-primary me-2 mt-2">
                             <i class="fa-sharp fa-solid fa-plus fa-xl me-2"></i>
                             Add
@@ -108,9 +108,11 @@
                                          <p>No results found.</p>
                                 </tr>
                                 @endif
-
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-start  ms-2 mt-3">
+                            {{($repo->links())}}
+                        </div>
                     </div>
                 </div>
             </div>

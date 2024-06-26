@@ -108,48 +108,65 @@
 
         <div class="row mt-4">
             <div class="col-lg-3 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">AVG</h6>
-                        <div class="chart-container" >
-                            <canvas id="myChart2"></canvas>
+            <div class="card z-index-2 h-100">
+                <div class="card-header pb-0 pt-3 bg-transparent">
+                    <h6 class="text-capitalize">AVG</h6>
+                    @if ($avg < 50)
+                        <h5 class="font-weight-bold text-center  mt-5">K</h5>
+                    @elseif ($avg >= 50 && $avg < 70)
+                        <h5 class="font-weight-bold text-center text-bold mt-5">C</h5>
+                    @elseif ($avg >= 70 && $avg < 80)
+                        <h5 class="font-weight-bold text-center text-bold mt-5">B</h5>
+                    @elseif ($avg >= 80 && $avg < 90)
+                        <h5 class=" font-weight-bold text-center  mt-5">BS</h5>
+                    @else
+                        <h5 class=" font-weight-bold  text-center  mt-5">IS</h5>
+                    @endif
+                        <div class="gauge-container">
+                            <div id="gauge"></div>
                         </div>
-                    </div>
+                        <div class="label">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="">K = <span>< 50%</span></p>
+                                    <p class="label-text">C = <span>51% - 69%</span></p>
+                                    <p class="label-text">B = <span>70% - 79%</span></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="">BS = <span>80% - 90%</span></p>
+                                    <p class="label-text">IS = <span>91% - 100%</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+
                 </div>
+            </div>
             </div>
             <div class="col-lg-3 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize text-center">Legal Compliance %</h6>
-                        </p>
-                    </div>
-
-                        <div style="width: 100%;">
-                            <canvas id="licenseComplianceChart"></canvas>
-                        </div>
-
+            <div class="card z-index-2 h-100">
+                <div class="card-header pb-0 pt-3 bg-transparent">
+                <h6 class="text-capitalize text-center">Legal Compliance %</h6>
+                </p>
+                </div>
+                <div style="width: 100%;">
+                    <canvas id="licenseComplianceChart"></canvas>
                 </div>
             </div>
+            </div>
             <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="row m-3">
-                        <div class="col">
-                            <h6 class="text-capitalize">Licence Report</h6>
-                        </div>
-                        <div class="col">
-                            <select id="myDropdown" class="form-control d-inline w-100" onchange="showSelected()">
-                                <option value="Weekly">Weekly</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart">
-                            <canvas id="licenseReportChart"></canvas>
-                        </div>
-                    </div>
+            <div class="card z-index-2 h-100">
+                <div class="row m-3">
+                <div class="col">
+                    <h6 class="text-capitalize">Licence Report</h6>
                 </div>
+                </div>
+                <div class="card-body">
+                <div class="chart">
+                    <canvas id="licenseReportChart"></canvas>
+                </div>
+                </div>
+            </div>
             </div>
         </div>
         <div class="row mt-4">
@@ -249,7 +266,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -259,6 +276,7 @@
 
 @push('js')
     <script src="./assets/js/plugins/chartjs.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const ctx = document.getElementById('licenseComplianceChart').getContext('2d');
@@ -329,32 +347,53 @@
                 }
             });
         });
-        var ctx = document.getElementById("myChart2");
-var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ["Application Details", "Interview", "Information Validation", "Offer Letter", "Final Checks"],
-        datasets: [{
-            label: '# of Votes',
-            data: [16, 41, 12, 20, 10],
-            backgroundColor: [
-                '#F5f5f5',
-                '#d5d5d5',
-                '#B2EBF2',
-                '#80DEEA',
-                '#00bcd4',
-            ],
-            borderWidth: 0
-        }]
-    },
-    options: {
-      legend: {
-            display: false
-            },
-    		cutoutPercentage: 75,
-        rotation: 1 * Math.PI,
-        circumference: 1 * Math.PI
+
+
+     //d3 js
+
+     var width = 300;
+    var height = 300;
+    var svg = d3.select("#gauge")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    // Define the arcs for the gauge
+    var arc = d3.arc()
+                .innerRadius(70)
+                .outerRadius(100)
+                .startAngle(function(d) { return d.startAngle; })
+                .endAngle(function(d) { return d.endAngle; });
+
+    var arcData = [
+      {startAngle: -Math.PI / 2, endAngle: -Math.PI / 4, color: "red"},
+      {startAngle: -Math.PI / 4, endAngle: 0, color: "orange"},
+      {startAngle: 0, endAngle: Math.PI / 4, color: "yellow"},
+      {startAngle: Math.PI / 4, endAngle: Math.PI / 2, color: "green"}
+    ];
+
+    svg.selectAll("path")
+       .data(arcData)
+       .enter()
+       .append("path")
+       .attr("d", arc)
+       .attr("fill", function(d) { return d.color; });
+
+    var needle = svg.append("line")
+                    .attr("x1", 0)
+                    .attr("y1", 0)
+                    .attr("x2", 0)
+                    .attr("y2", -80)
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 2);
+
+    function updateGauge(value) {
+      var angle = (value / 100) * Math.PI - Math.PI / 2;
+      needle.attr("transform", "rotate(" + (angle * 180 / Math.PI) + ")");
     }
-});
+
+    updateGauge({!! json_encode($avg) !!});
     </script>
 @endpush

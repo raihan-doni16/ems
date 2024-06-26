@@ -31,20 +31,16 @@
     @endguest
 
     @auth
-        @if (in_array(request()->route()->getName(), ['sign-in-static', 'sign-up-static', 'login', 'register', 'recover-password', 'rtl', 'virtual-reality']))
+        @if (in_array(request()->route()->getName(), ['login', 'register']))
             @yield('content')
         @else
-            @if (!in_array(request()->route()->getName(), ['profile', 'profile-static']))
+
                 <div class="min-height-300 color-bg position-absolute w-100"></div>
-            @elseif (in_array(request()->route()->getName(), ['profile-static', 'profile']))
-                <div class="min-height-300 color-bg position-absolute w-100"></div>
-            @endif
+
             @include('layouts.navbars.auth.sidenav')
                 <main class="main-content border-radius">
                     @yield('content')
-
                 </main>
-            @include('components.fixed-plugin')
             @include('sweetalert::alert')
         @endif
     @endauth

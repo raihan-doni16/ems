@@ -39,7 +39,7 @@ class RepositoryNotif extends Notification
         return (new MailMessage)
         ->greeting(" Admin Created Repository {$this->repo['name']} ")
         ->line("Admin{$this->repo['name']} has successfully submitted a license report category {$this->repo['category']} ")
-        ->action('Notification Action', url('/licence-report'))
+        ->action('See More', url('/licence-report'))
         ->line('Thank you for using our application!');
     }
 

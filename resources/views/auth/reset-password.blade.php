@@ -1,13 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <main class="main-content  mt-0">
         <section>
-            <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto" style="margin-top: 200px">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Reset your password</h4>
@@ -34,7 +31,7 @@
                         <div
                             class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
 
-                            <img src="img/login-img.png" alt="login" class="login-img ms-5">
+                            <img src="img/login-img.png" alt="login" class="login-img img-move ">
                             <h4 class="login-right">Environment Management System</h4>
 
                         </div>

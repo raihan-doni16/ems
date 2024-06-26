@@ -12,9 +12,8 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="row">
-                            @foreach ($licenceReport as $data)
-                            @if ($data->approve == '0')
-                            <div class="col-md-5 kanban-card card ms-4 mb-2" data-bs-toggle="modal" data-bs-target="#approvalModal{{$data->id}}">
+                            @foreach ($submited as $data)
+                            <div class="col-md-5 kanban-card card ms-4 mt-3 mb-2" data-bs-toggle="modal" data-bs-target="#approvalModal{{$data->id}}">
                                 <div class="card-body">
                                     <div class="badge-container position-absolute top-0 end-0 m-2 d-flex">
                                         <span class="badge badge-sm me-2" style="background-color: rgba(255, 255, 0, 0.5)">{{$data->kategori}}</span>
@@ -75,9 +74,10 @@
                                     </div>
                                 </div>
                             </div>
-
-                            @endif
                             @endforeach
+                        </div>
+                        <div class="d-flex justify-content-start  ms-2 mt-3">
+                            {{($submited->links())}}
                         </div>
                     </div>
                 </div>
@@ -91,9 +91,8 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="row">
-                            @foreach ($licenceReport as $data)
-                            @if ($data->approve == '1')
-                            <div class="col-md-5 ms-4 mb-2 kanban-card card  position-relative">
+                            @foreach ($acc as $data)
+                            <div class="col-md-5 ms-4 mb-2 mt-3 kanban-card card  position-relative">
                                 <div class="card-body">
                                     <div class="badge-container position-absolute top-0 end-0 m-2 d-flex">
                                         <span class="badge badge-sm me-2" style="background-color: rgba(255, 255, 0, 0.5)">{{$data->kategori}}</span>
@@ -110,8 +109,10 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
                             @endforeach
+                        </div>
+                        <div class="d-flex justify-content-start  ms-2 mt-3">
+                            {{($acc->links())}}
                         </div>
                     </div>
                 </div>

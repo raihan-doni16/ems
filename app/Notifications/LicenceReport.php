@@ -41,7 +41,7 @@ class LicenceReport extends Notification
         return (new MailMessage)
         ->greeting("{$this->licence['area']} Created licence report")
         ->line("{$this->licence['tipe_bisnis']}  {$this->licence['area']} has successfully submitted a license report with classification {$this->licence['klasifikasi']} ")
-        ->action('Notification Action', url('/licence-report'))
+        ->action('See More', url('/licence-report'))
         ->line('Thank you for using our application!');
     }
     /**

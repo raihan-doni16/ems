@@ -112,7 +112,10 @@ class FrontController extends Controller
                 DB::raw('ROUND((count(case when status_db = "not comply" then 1 end) / count(*)) * 100) as persen_not_comply')
             )->groupBy('area');
 
-
+        $avgQuery = DB::table('licence_report')
+            ->select(
+                DB::raw('ROUND((count(case when status_db = "comply" then 1 end) / count(*)) * 100) as persen_comply'),
+            )->get();
 
         // Tipe table
         $tipeQuery = DB::table('licence_report')
@@ -157,6 +160,7 @@ class FrontController extends Controller
             $enviroQuery->where('status', $request->input('status'));
             $totalQuery->where('status', $request->input('status'));
             $generalQuery->where('status_db', $request->input('status'));
+            $avgQuery->where('status_db', $request->input('status'));
         }
 
         if ($request->has('area')&& $request->input('area') != '') {
@@ -168,6 +172,7 @@ class FrontController extends Controller
             $enviroQuery->where('area', $request->input('area'));
             $totalQuery->where('area', $request->input('area'));
             $generalQuery->where('area', $request->input('area'));
+            $avgQuery->where('area', $request->input('area'));
         }
 
 
@@ -179,16 +184,17 @@ class FrontController extends Controller
         $sites = $sitesQuery->paginate(5);
         $tipe = $tipeQuery->paginate(5);
         $data_progress = $data_progressQuery;
-
-        return view('Front.legal-compliance.dashboard', compact('data', 'safety', 'health', 'enviro', 'total', 'general', 'notcomply', 'notmandatory', 'comply', 'pie', 'sites', 'tipe', 'data_progress', 'filter_area', 'filter_status'));
+        $avg = $avgQuery->first()->persen_comply;
+        return view('Front.legal-compliance.dashboard', compact('data', 'safety', 'health', 'enviro', 'total', 'general', 'notcomply', 'notmandatory', 'comply', 'pie', 'sites', 'tipe', 'data_progress', 'filter_area', 'filter_status','avg'));
     }
 
 
 
     public function acc_report()
     {
-        $licenceReport = DB::table('licence_report')->get();
-        return view("Front.legal-compliance.acc-report",compact('licenceReport'));
+        $submited = DB::table('licence_report')->where('approve', 0)->paginate(4);
+        $acc = DB::table('licence_report')->where('approve', 1)->paginate(4);
+        return view("Front.legal-compliance.acc-report", compact('submited', 'acc'));
     }
     public function repository()
     {
@@ -196,7 +202,7 @@ class FrontController extends Controller
         $repo = DB::table('repository')
             ->join('users', 'repository.user_id', '=', 'users.id')
             ->select('repository.*', 'users.email')
-            ->get();
+            ->paginate(7);
         return view("Front.legal-compliance.repository.repository",compact('repo'));
     }
     public function add_repository()
@@ -288,7 +294,8 @@ class FrontController extends Controller
 
     }
     public function licence_report(){
-        $licenceReport = DB::table('licence_report')->get();
+        $licenceReport = DB::table('licence_report')->paginate(7);
+
         return view("Front.legal-compliance.licence-report.licence-report",compact('licenceReport'));
     }
 

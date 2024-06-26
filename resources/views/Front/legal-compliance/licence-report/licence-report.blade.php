@@ -5,8 +5,8 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="d-flex justify-content-end pe-4">
-                <a href="" class="btn btn-success m-2"><i class="bi bi-filetype-pdf me-2"></i> PDF</a>
-                <a href="" class="btn btn-success m-2"><i class="bi bi-filetype-csv me-2"></i> CSV</a>
+                {{-- <a href="" class="btn btn-success m-2"><i class="bi bi-filetype-pdf me-2"></i> PDF</a>
+                <a href="" class="btn btn-success m-2"><i class="bi bi-filetype-csv me-2"></i> CSV</a> --}}
                 <a href="{{route('add-licence-report')}}" class="btn btn-warning m-2"><i class="fa-solid fa-plus fa-lg me-2" style="color: #fafafa;"></i> New Licence</a>
             </div>
         </div>
@@ -112,12 +112,13 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="d-flex justify-content-start  ms-2 mt-3">
+                            {{($licenceReport->links())}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        @include('layouts.footers.auth.footer')
     </div>
 @endsection
 
