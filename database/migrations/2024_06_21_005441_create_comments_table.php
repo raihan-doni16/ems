@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('licence_id')->unique();
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->timestamps();
 
-    
+
             $table->foreign('licence_id')
                   ->references('id')
                   ->on('licence_report')
