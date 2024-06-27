@@ -38,6 +38,28 @@ class FrontController extends Controller
         return view('front.legal-compliance');
     }//
 
+    // Menampilkan halaman PPU
+    public function ppu()
+    {
+     return view('front.ppu');
+    }
+
+    // Menampilkan halaman PLNB3
+    public function plnb3()
+    {
+     return view('front.plnb3');
+    }
+    // Menampilkan halaman Eduro
+    public function eduro()
+    {
+    return view('front.eduro');
+    }
+    // Menampilkan halaman Eduro
+    public function utcmdirectory()
+    {
+    return view('front.utcm-directory');
+    }
+
 //fitur legal-compliance post
     public function dashboard()
     {

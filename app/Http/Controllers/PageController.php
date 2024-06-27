@@ -168,6 +168,22 @@ class PageController extends Controller
     {
         return view("Admin.Legal-Compliance.index");
     }
+    public function ppu()
+    {
+        return view("Admin.PPU.index");
+    }
+    public function plnb3()
+    {
+        return view("Admin.PLNB3.index");
+    }
+    public function eduro()
+    {
+        return view("Admin.Eduro.index");
+    }
+    public function utcmdirectory()
+    {
+        return view("Admin.UTCM-Directory.index");
+    }
 
   public function profile()
     {

@@ -16,6 +16,10 @@
                     <a class="dropdown-item" href="{{route('front-ppa')}}">PPA</a>
                     <a class="dropdown-item" href="{{route('front-plb3')}}">PLB3</a>
                     <a class="dropdown-item" href="{{route('front-legal')}}">Legal Compliance</a>
+                    <a class="dropdown-item" href="{{route('front-ppu')}}">PPU</a>
+                    <a class="dropdown-item" href="{{route('front-plnb3')}}">PLNB3</a>
+                    <a class="dropdown-item" href="{{route('front-eduro')}}">Eduro</a>
+                    <a class="dropdown-item" href="{{route('front-utcm')}}">UTCM Directory</a>
                     {{-- <a class="dropdown-item" href="{{route('legal')}}">Legal Compliance</a> --}}
                 </div>
             </li>

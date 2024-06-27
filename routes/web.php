@@ -33,8 +33,10 @@ Route::get('/about', [FrontController::class, 'about'])->name('front-about');
 Route::get('/front-ppa', [FrontController::class, 'ppa'])->name('front-ppa');
 Route::get('/front-plb3', [FrontController::class, 'plb3'])->name('front-plb3');
 Route::get('/front-legal', [FrontController::class, 'legalCompliance'])->name('front-legal');
-
-
+Route::get('/front-ppu', [FrontController::class, 'ppu'])->name('front-ppu');
+Route::get('/front-plnb3', [FrontController::class, 'plnb3'])->name('front-plnb3');
+Route::get('/front-eduro', [FrontController::class, 'eduro'])->name('front-eduro');
+Route::get('/front-utcm', [FrontController::class, 'utcmdirectory'])->name('front-utcm');
 
 
 // Route::get('/', function () {return redirect('/home');})->middleware('auth');
@@ -146,6 +148,66 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ppa/legal-edit/{id}', [PageController::class, 'legal_edit'])->name('ppa.legal-edit');
     Route::post('/ppa/legal-edit-post', [PageController::class, 'legal_edit_post'])->name('ppa.legal-edit-post');
     Route::get('/ppa/legal-delete/{id}', [PageController::class, 'legal_delete'])->name('ppa.legal-delete');
+
+
+     // fitur PPU
+     Route::get('/ppu', [PageController::class, 'ppu'])->name('ppu');
+     // route kegiatan pengukuran
+     Route::get('/ppu/kegiatan-pengukuran-add', [PageController::class, 'kegiatan_pengukuran_add'])->name('ppu.kegiatan-pengukuran-add');
+     Route::post('/ppu/kegiatan-pengukuran-post', [PageController::class, 'kegiatan_pengukuran_post'])->name('ppu.kegiatan-pengukuran-proses_add');
+     Route::get('/ppu/kegiatan-pengukuran-edit/{id}', [PageController::class, 'kegiatan_pengukuran_edit'])->name('ppu.kegiatan-pengukuran-edit');
+     Route::post('/ppu/kegiatan-pengukuran-edit-post', [PageController::class, 'kegiatan_pengukuran_edit_post'])->name('ppu.kegiatan-pengukuran-edit-post');
+     Route::get('/ppu/kegiatan-pengukuran-delete/{id}', [PageController::class, 'kegiatan_pengukuran_delete'])->name('ppu.kegiatan-pengukuran-delete');
+     // route matriks pengukuran
+     Route::get('/ppu/matriks-pengukuran-add', [PageController::class, 'matriks-pengukuran_add'])->name('ppu.matriks-pengukuran-add');
+     Route::post('/ppu/matriks-pengukuran-post', [PageController::class, 'matriks-pengukuran_post'])->name('ppu.matriks-pengukuran-proses_add');
+     Route::get('/ppu/matriks-pengukuran-edit/{id}', [PageController::class, 'matriks-pengukuran_edit'])->name('ppu.matriks-pengukuran-edit');
+     Route::post('/ppu/matriks-pengukuran-edit-post', [PageController::class, 'matriks-pengukuran_edit_post'])->name('ppu.matriks-pengukuran-edit-post');
+     Route::get('/ppu/matriks-pengukuran-delete/{id}', [PageController::class, 'matriks-pengukuran_delete'])->name('ppu.matriks-pengukuran-delete');
+
+    // fitur PLNB3
+    Route::get('/plnb3', [PageController::class, 'plnb3'])->name('plnb3');
+    // route waste journey
+    Route::get('/plnb3/waste-journey-add', [PageController::class, 'waste_journey_add'])->name('plnb3.waste-journey-add');
+    Route::post('/plnb3/waste-journey-post', [PageController::class, 'waste_journey_post'])->name('plnb3.waste-journey-post');
+    Route::get('/plnb3/waste-journey-edit/{id}', [PageController::class, 'waste_journey_edit'])->name('plnb3.waste-journey-edit');
+    Route::post('/plnb3/waste-journey-edit-post', [PageController::class, 'waste_journey_edit_post'])->name('plnb3.waste-journey-edit-post');
+    Route::get('/plnb3/waste-journey-delete/{id}', [PageController::class, 'waste_journey_delete'])->name('plnb3.waste-journey-delete');
+    // route waste highlights
+    Route::get('/plnb3/waste-highlights-add', [PageController::class, 'waste_highlights_add'])->name('plnb3.waste-highlights-add');
+    Route::post('/plnb3/waste-highlights-post', [PageController::class, 'waste_highlights_post'])->name('plnb3.waste-highlights-post');
+    Route::get('/plnb3/waste-highlights-edit/{id}', [PageController::class, 'waste_highlights_edit'])->name('plnb3.waste-highlights-edit');
+    Route::post('/plnb3/waste-highlights-edit-post', [PageController::class, 'waste_highlights_edit_post'])->name('plnb3.waste-highlights-edit-post');
+    Route::get('/plnb3/waste-highlights-delete/{id}', [PageController::class, 'waste_highlights_delete'])->name('plnb3.waste-highlights-delete');
+
+    // fitur Eduro
+    Route::get('/eduro', [PageController::class, 'eduro'])->name('eduro');
+    // route eduro media
+    Route::get('/eduro/eduro-media-add', [PageController::class, 'eduro_media_add'])->name('eduro.eduro-media-add');
+    Route::post('/eduro/eduro-media-post', [PageController::class, 'eduro_media_post'])->name('eduro.eduro-media-proses_add');
+    Route::get('/eduro/eduro-media-edit/{id}', [PageController::class, 'eduro_media_edit'])->name('eduro.eduro-media-edit');
+    Route::post('/eduro/eduro-media-edit-post', [PageController::class, 'eduro_media_edit_post'])->name('eduro.eduro-media-edit-post');
+    Route::get('/eduro/eduro-media-delete/{id}', [PageController::class, 'eduro_media_delete'])->name('eduro.eduro-media-delete');
+    // route modul eduro
+    Route::get('/eduro/modul-eduro-add', [PageController::class, 'modul-eduro_add'])->name('eduro.modul-eduro-add');
+    Route::post('/eduro/modul-eduro-post', [PageController::class, 'modul-eduro_post'])->name('eduro.modul-eduro-proses_add');
+    Route::get('/eduro/modul-eduro-edit/{id}', [PageController::class, 'modul-eduro_edit'])->name('eduro.modul-eduro-edit');
+    Route::post('/eduro/modul-eduro-edit-post', [PageController::class, 'modul-eduro_edit_post'])->name('eduro.modul-eduro-edit-post');
+    Route::get('/eduro/modul-eduro-delete/{id}', [PageController::class, 'modul-eduro_delete'])->name('eduro.modul-eduro-delete');
+    // route pengelolaan limbah
+    Route::get('/eduro/pengelolaan-limbah-add', [PageController::class, 'pengelolaan-limbah_add'])->name('eduro.pengelolaan-limbah-add');
+    Route::post('/eduro/pengelolaan-limbah-post', [PageController::class, 'pengelolaan-limbah_post'])->name('eduro.pengelolaan-limbah_add');
+    Route::get('/eduro/pengelolaan-limbah-edit/{id}', [PageController::class, 'pengelolaan-limbah_edit'])->name('eduro.pengelolaan-limbah-edit');
+    Route::post('/eduro/pengelolaan-limbah-edit-post', [PageController::class, 'pengelolaan-limbah_edit_post'])->name('eduro.pengelolaan-limbah-edit-post');
+    Route::get('/eduro/pengelolaan-limbah-delete/{id}', [PageController::class, 'pengelolaan-limbah_delete'])->name('eduro.pengelolaan-limbah-delete');
+
+    // fitur UTCM Directory
+    Route::get('/utcm-directory', [PageController::class, 'utcmdirectory'])->name('utcm-directory');
+    Route::get('/utcm-directory/hasil-kinerja-add', [PageController::class, 'hasil-kinerja_add'])->name('utcm-directory.hasil-kinerja-add');
+    Route::post('/utcm-directory/hasil-kinerja-post', [PageController::class, 'hasil-kinerja_post'])->name('utcm-directory.hasil-kinerja-proses_add');
+    Route::get('/utcm-directory/hasil-kinerja-edit/{id}', [PageController::class, 'hasil-kinerja_edit'])->name('utcm-directory.hasil-kinerja-edit');
+    Route::post('/utcm-directory/hasil-kinerja-edit-post', [PageController::class, 'hasil-kinerja_edit_post'])->name('utcm-directory.hasil-kinerja-edit-post');
+    Route::get('/utcm-directory/hasil-kinerja-delete/{id}', [PageController::class, 'hasil-kinerja_delete'])->name('utcm-directory.hasil-kinerja-delete');
 
 
 

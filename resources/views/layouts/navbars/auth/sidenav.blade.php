@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'ppa' ? 'active' : '' }}" href="{{ route('ppa') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'ppu' ? 'active' : '' }}" href="{{ route('ppu') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
                     </div>
@@ -41,11 +41,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'ppa' ? 'active' : '' }}" href="{{ route('ppa') }}}}">
+                <a class="nav-link {{ Route::currentRouteName() == 'plnb3' ? 'active' : '' }}" href="{{ route('plnb3') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">PNLB3</span>
+                    <span class="nav-link-text ms-1">PLNB3</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -56,6 +56,24 @@
                     <span class="nav-link-text ms-1">Legal Compliance</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{Route::currentRouteName() == 'eduro' ? 'active' : '' }}" href="{{ route('eduro') }}">
+                    <div class="icon icon-sm border-radius-md text-center text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-book text-black"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Eduro</span>
+                   
+                </a>
+            </li>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{Route::currentRouteName() == 'utcm-directory' ? 'active' : '' }}" href="{{ route('utcm-directory') }}">
+                <div class="icon icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-folder"></i>
+                </div>
+                <span class="nav-link-text ms-1">UTCM Directory</span>
+            </a>
+        </li>
 
         </ul>
     </div>

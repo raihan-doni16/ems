@@ -136,3 +136,58 @@ h4{
     margin-bottom: 0;
     color: #666;
   }
+
+  /* Styles for PPU (Pengendalian Pencemaran Udara) page */
+
+/* .ppu-hero {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+.ppu-hero h4 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.ppu-card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ppu-card .card-body {
+    padding: 20px;
+}
+
+.ppu-card img {
+    max-width: 100%;
+    height: auto;
+} */
+/* Example CSS for card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.custom-h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.custom-color {
+    color: #28a745; /* Example color */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
