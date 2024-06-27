@@ -5,11 +5,13 @@ Installation and Configuration Guide
 git clone <repository_url>
 ```
 Replace `<repository_url>` with the actual URL of your repository.
+
 2. Install Dependencies
 ```bash
 composer install
 ```
 If you haven't installed Composer yet, download it from getcomposer.org first.
+
 3. Install Laravel UI Package
 ```bash
 composer require laravel/ui
