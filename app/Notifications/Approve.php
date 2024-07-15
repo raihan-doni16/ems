@@ -39,7 +39,7 @@ class Approve extends Notification
         ->greeting("Admin has approved the license report {$this->approve['area']}")
         ->line("{$this->approve['tipe_bisnis']}  {$this->approve['area']} has successfully Approve license report with classification {$this->approve['klasifikasi']} ")
         ->line("comment : {$this->approve['comment']}")
-        ->action('Notification Action', url('/licence-report'))
+        ->action('Notification Action', url('/acc-report'))
         ->line('Thank you for using our application!');
     }
 
