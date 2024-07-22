@@ -11,6 +11,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 .gauge-container {
     display: flex;
     margin-top: -50px;
